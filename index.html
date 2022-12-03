@@ -1,52 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Welcome to Vue</title>
-  <script src="https://unpkg.com/vue"></script>
-</head>
-<body>
-  <div id="app">
-    <img src="https://vuejs.org/images/logo.png" alt="Vue logo">
-    <h1>{{ greeting }}</h1>
-    <ul>
-      <li>
-        To learn more about Vue, visit
-        <a :href="docsURL" target="_blank">
-          {{ humanizeURL(docsURL) }}
-        </a>
-      </li>
-      <li>
-        For live help with simple questions, check out
-        <a :href="discordURL" target="_blank">
-          the Discord chat
-        </a>
-      </li>
-      <li>
-        For more complex questions, post to
-        <a :href="forumURL" target="_blank">
-          the forum
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        greeting: 'Welcome to your Vue.js app!',
-        docsURL: 'http://vuejs.org/guide/',
-        discordURL: 'https://chat.vuejs.org',
-        forumURL: 'http://forum.vuejs.org/'
-      },
-      methods: {
-        humanizeURL: function (url) {
-          return url
-            .replace(/^https?:\/\//, '')
-            .replace(/\/$/, '')
-        }
-      }
-    })
-  </script>
-</body>
+	<head>
+		<title>
+			Lab 10c Home Page
+		</title>
+		<link rel= 'stylesheet' href= 'https://fonts.googleapis.com/css2?family=Lato'>
+		<link rel= 'stylesheet' href= 'https://fonts.googleapis.com/css2?family=Oswald'>
+		<script src="https://unpkg.com/vue@2"></script>
+	</head>
+	<body>
+		<div id="myfirstpage">
+			<div :style="styleCentered">
+				<img :style="styleImage" :src="vueLink">
+			</div>
+			<div :style="styleCentered">
+				<h1 :style="styleHeading">{{ title }}</h1>
+			</div>
+			<div :style="styleCentered">
+				<h2 :style="styleHeading2">{{ heading2 }}</h2>
+			</div>
+			<div :style="styleCentered">
+				<p :style="stylePara">{{ installation1 }}<a :href="chocolateyLink">Chocolatey</a>{{ installation2 }}</p>
+				<p :style="stylePara">{{ installation3 }}<a :href="gitLink">HERE</a>{{ installation3a }}</p>
+				<p :style="stylePara">{{ installation4 }}<a :href="serviceLink">HERE</a>{{ installation5 }}</p>
+			</div>
+			<div :style="styleCentered">
+				<h2 :style="styleHeading2">{{ heading3 }}</h2>
+			</div>
+			<div :style="styleCentered">
+				<p :style="stylePara">{{ construction1 }}</p>
+				<p :style="stylePara">{{ construction2 }}</p>
+			</div>
+		</div>
+	</body>
+	<script>
+		var page = new Vue({
+		el: '#myfirstpage',
+		data: {
+			styleImage: {
+				width: '10%',
+				height: 'auto'
+			},
+			stylePara: {
+				width: '50%',
+				marginLeft: 'auto',
+				marginRight: 'auto'
+			},
+			styleCentered: {
+				textAlign: 'center'
+			},
+			styleHeading: {
+				fontFamily: 'Oswald',
+				fontSize: '40px'
+			},
+			styleHeading2: {
+				fontFamily: 'Lato',
+				fontSize: '25px'
+			},
+			title: 'My Experience and Difficulties With Vue.js',
+			heading2: 'Installation',
+			heading3: 'Construction of this Page',
+			installation1: 'Before I could install Vue.js on my machine, I was required to download ',
+			installation2: '. This along with Node.js are used to install Vue.js itself. I found this process challenging as I was running into errors whilst running the appropriate Powershell commands. The reasoning for these errors was due to Powershell blocking script execution for security reasons, and I resolved it by running the "Set-ExecutionPolicy RemoteSigned" command as an administrator.',
+			installation3: 'Next I needed to initiate my Vue.js project, but this process was actually well documented and simple. The Vue.js community provides several templates through GitHub (Found ',
+			installation3a: ') that a user can use as a base for their own project. I looked through each template and found that most of them were beyond my needs, as they included advanced features such as those for code review and testing. Thus, I chose the simplest template available and replaced the contents with my own HTML/CSS/Vue.js code',
+			installation4: 'Now I had to figure out which service provider could host my Vue.js project web page. Similarly, this turned out to be an easy process as the community has compiled the most popular hosting services available (Found ',
+			installation5: '). Although I was initially going to host this page on Digital Ocean, it turned out that I only had static files to host, so Netlify seemed most appropriate. Uploading my files to Netlify was easy as I could simply upload them to a GitHub respository and the service would handle deployment from then onwards. Netlify was also free for my intended usage and provided a temporary DNS for my web page, which saved me money.',
+			construction1: 'Initially, my resulting web page was not able to properly recognize Vue.js code. This was my second challenge, but I began resolving this by looking into the Chrome Developer Console and finding the name of the error. I was then able to look up the error on Google and find a thread describing a situation similar to my own. As it turned out, my import of the Vue.js package from "unpkg.com" did not specify a version, so specifying Vue.js version 2.0 resolved my issue.',
+			construction2: 'Then I had to review syntax documentation for Vue.js in order to develop my own web page. After reading, I realized that the main features of Vue.js are primarily for more advanced usages such as calculations, conditional formatting, and event handling. So I tried to build as much as the page using the basics of Vue.js, which includes text interpolation and style bindings. Text interpolation is simply storing text data inside of JavaScript/Vue.js attributes and leaving references in the raw HTML code (Denoted by curly braces {{ }}). Similarly, instead of creating CSS <style> blocks, I defined all css styling inside of JavaScript/Vue.js objects, which contain an attribute for each style. Overall I would say Vue.js is a front-end framework suited more towards dynamic web applications as it provides very powerful computational tools. Using Vue.js for this simple web page just results in different syntax, and is no better or worse than if I had only used pure HTML and CSS.',
+			chocolateyLink: 'https://chocolatey.org/',
+			gitLink: 'https://github.com/vuejs-templates',
+			serviceLink: 'https://vue-community.org/guide/ecosystem/hosting.html#server-rendered-websites',
+			vueLink: 'https://positivethinking.tech/wp-content/uploads/2021/01/Logo-Vuejs.png'
+			}
+		})
+	</script>
 </html>
